@@ -403,8 +403,8 @@
       ]
     },
     "/home/holyaustin/Dapps-Empty/2024/Dec2024/LetsFundEthena/contracts/DappFund.sol": {
-      "lastModificationDate": 1733108475129,
-      "contentHash": "458cf40b376e423360bd4b046b74d1e6",
+      "lastModificationDate": 1733182170996,
+      "contentHash": "46a5bb70864cc65c877deda39f6c072b",
       "sourceName": "contracts/DappFund.sol",
       "solcConfig": {
         "version": "0.8.19",
@@ -432,7 +432,8 @@
       "imports": [
         "@openzeppelin/contracts/access/Ownable.sol",
         "@openzeppelin/contracts/utils/Counters.sol",
-        "@openzeppelin/contracts/access/AccessControl.sol"
+        "@openzeppelin/contracts/access/AccessControl.sol",
+        "@openzeppelin/contracts/token/ERC20/IERC20.sol"
       ],
       "versionPragmas": [
         ">=0.7.0 <0.9.0"
@@ -801,6 +802,41 @@
       ],
       "artifacts": [
         "IERC165"
+      ]
+    },
+    "/home/holyaustin/Dapps-Empty/2024/Dec2024/LetsFundEthena/node_modules/@openzeppelin/contracts/token/ERC20/IERC20.sol": {
+      "lastModificationDate": 1733152208514,
+      "contentHash": "df36f7051335cd1e748b1b6463b7fdd3",
+      "sourceName": "@openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "solcConfig": {
+        "version": "0.8.19",
+        "settings": {
+          "optimizer": {
+            "enabled": true,
+            "runs": 200
+          },
+          "outputSelection": {
+            "*": {
+              "*": [
+                "abi",
+                "evm.bytecode",
+                "evm.deployedBytecode",
+                "evm.methodIdentifiers",
+                "metadata"
+              ],
+              "": [
+                "ast"
+              ]
+            }
+          }
+        }
+      },
+      "imports": [],
+      "versionPragmas": [
+        "^0.8.0"
+      ],
+      "artifacts": [
+        "IERC20"
       ]
     }
   }

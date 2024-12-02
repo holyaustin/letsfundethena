@@ -122,7 +122,7 @@ contract DappFund is Ownable, AccessControl {
     require(charityExist[id], 'Charity Not Found');
     require(!charities[id].banned, 'Charity Banned, contact admin');
     require(msg.value > 0 ether, 'Donation cannot be zero');
-    require(USDe.balanceOf(msg.sender) > 0, "Donation cannot be zero")
+    require(USDe.balanceOf(msg.sender) > 0, "Donation cannot be zero");
 
     require(charities[id].raised < charities[id].amount, 'Charity budget fulfilled');
 
