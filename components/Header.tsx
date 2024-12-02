@@ -1,5 +1,6 @@
 import React from 'react'
 import ConnectBtn from './ConnectBtn'
+import FaucetBtn from './Faucet'
 import Link from 'next/link'
 import { MdSunnySnowing } from 'react-icons/md'
 
@@ -17,14 +18,16 @@ const Header: React.FC = () => {
           <div className="w-full relative flex justify-between px-4 lg:static">
             <Link
               className="text-sm font-semibold leading-relaxed text-green-600
-            flex justify-start items-center py-2 whitespace-no-wrap uppercase"
+            flex justify-start items-center py-2 whitespace-no-wrap uppercase "
               href="/"
             >
               <MdSunnySnowing size={25} />
-              <span className='hidden sm:flex'>LetsFund</span>
+              <span className='hidden sm:flex mr-96 text-xl'>LetsFund</span>
             </Link>
 
+            <FaucetBtn />
             <ConnectBtn />
+            
           </div>
         </div>
       </nav>

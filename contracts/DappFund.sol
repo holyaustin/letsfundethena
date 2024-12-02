@@ -4,6 +4,7 @@ pragma solidity >=0.7.0 <0.9.0;
 import '@openzeppelin/contracts/access/Ownable.sol';
 import '@openzeppelin/contracts/utils/Counters.sol';
 import '@openzeppelin/contracts/access/AccessControl.sol';
+import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 
 contract DappFund is Ownable, AccessControl {
   using Counters for Counters.Counter;
@@ -11,6 +12,7 @@ contract DappFund is Ownable, AccessControl {
   Counters.Counter private _totalDonation;
 
   uint256 public charityTax;
+  IERC20 public USDe;
 
   mapping(uint256 => CharityStruct) charities;
   mapping(uint256 => SupportStruct[]) supportersOf;
@@ -43,6 +45,7 @@ contract DappFund is Ownable, AccessControl {
   }
 
   constructor(uint256 _charityTax) {
+    USDe = IERC20(0x426E7d03f9803Dd11cb8616C65b99a3c0AfeA6dE);
     charityTax = _charityTax;
   }
 
@@ -119,6 +122,8 @@ contract DappFund is Ownable, AccessControl {
     require(charityExist[id], 'Charity Not Found');
     require(!charities[id].banned, 'Charity Banned, contact admin');
     require(msg.value > 0 ether, 'Donation cannot be zero');
+    require(USDe.balanceOf(msg.sender) > 0, "Donation cannot be zero")
+
     require(charities[id].raised < charities[id].amount, 'Charity budget fulfilled');
 
     _totalDonation.increment();
@@ -141,6 +146,7 @@ contract DappFund is Ownable, AccessControl {
 
     payTo(charities[id].owner, payment);
     payTo(owner(), fee);
+    IERC20(_token).transferFrom(msg.sender, address(this), amount);
   }
 
   function changeTax(uint256 _taxPct) public onlyOwner {

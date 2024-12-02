@@ -13,20 +13,20 @@ import {
   coinbaseWallet,
   rainbowWallet,
 } from '@rainbow-me/rainbowkit/wallets'
-import { mainnet, linea, hardhat } from 'wagmi/chains'
+import { mainnet, hardhat } from 'wagmi/chains'
 import { alchemyProvider } from 'wagmi/providers/alchemy'
 import { infuraProvider } from 'wagmi/providers/infura'
 import { publicProvider } from 'wagmi/providers/public'
 import { Session } from 'next-auth'
 import { SessionProvider } from 'next-auth/react'
 
-const publicProviderRPC = `https://linea-sepolia.infura.io/v3/${process.env.NEXT_PUBLIC_INFURA_API_KEY}`
+const publicProviderRPC = `https://testnet.rpc.ethena.fi`
 
-const lineaSepolia: Chain = {
-  id: 59_141,
-  name: 'Linea Sepolia',
-  network: 'linea',
-  //iconUrl: 'https://sepolia.lineascan.build/assets/linea/images/svg/logos/logo-light.svg?v=24.11.2.0',
+const ethenaTestnet: Chain = {
+  id: 52_085_143,
+  name: 'Ethena Network Testnet',
+  network: 'ethena',
+  iconUrl: 'https://network.ethena.fi/shared/ethena.svg',
   iconBackground: '#000000',
   nativeCurrency: {
     decimals: 18,
@@ -34,18 +34,18 @@ const lineaSepolia: Chain = {
     symbol: 'ETH',
   },
   rpcUrls: {
-    public: { http: ['https://rpc.sepolia.linea.build'] },
+    public: { http: ['https://testnet.rpc.ethena.fi'] },
     default: { http: [publicProviderRPC] },
   },
   blockExplorers: {
-    default: { name: 'Aia Block Explorer', url: 'https://sepolia.lineascan.build/' },
-    etherscan: { name: 'Aia Block Explorer', url: 'https://explorer.sepolia.linea.build/' },
+    default: { name: 'Ethena Block Explorer', url: 'https://testnet.rpc.ethena.fi' },
+    etherscan: { name: 'Ethena Block Explorer', url: 'https://testnet.explorer.ethena.fi' },
   },
   testnet: true,
 } 
 
 const { chains, publicClient } = configureChains(
-  [lineaSepolia, linea, hardhat],
+  [ethenaTestnet, hardhat],
   [alchemyProvider({ apiKey: process.env.NEXT_PUBLIC_ALCHEMY_ID as string }), publicProvider()]
 )
 
@@ -70,7 +70,7 @@ const wagmiConfig = createConfig({
 })
 
 const demoAppInfo = {
-  appName: 'LetsFunds dApp',
+  appName: 'LetsFunds Ethena',
 }
 
 const getSiweMessageOptions: GetSiweMessageOptions = () => ({

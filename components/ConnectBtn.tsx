@@ -37,7 +37,7 @@ const ConnectBtn: React.FC = () => {
                 return (
                   <button
                     className="bg-transparent border border-green-600 hover:bg-green-700
-                        py-2 px-6 text-green-600 hover:text-white rounded-full
+                        py-2 px-6 text-green-600 hover:text-white rounded-full font-bold
                         transition duration-300 ease-in-out"
                     onClick={openConnectModal}
                     type="button"
@@ -51,7 +51,7 @@ const ConnectBtn: React.FC = () => {
                 return (
                   <button
                     className="bg-transparent border border-green-600 hover:bg-green-700
-                        py-2 px-6 text-green-600 hover:text-white rounded-full
+                        py-2 px-6 text-green-600 hover:text-white rounded-full font-bold
                         transition duration-300 ease-in-out"
                     onClick={openChainModal}
                     type="button"
@@ -97,7 +97,7 @@ const ConnectBtn: React.FC = () => {
 
                   <button
                     className="bg-transparent border border-green-600 hover:bg-green-700
-                    py-2 px-6 text-green-600 hover:text-white rounded-full
+                    py-2 px-6 text-green-600 hover:text-white rounded-full font-bold
                     transition duration-300 ease-in-out"
                     onClick={openAccountModal}
                     type="button"

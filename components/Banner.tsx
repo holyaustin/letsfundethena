@@ -11,7 +11,7 @@ const Banner: React.FC<{ mine?: boolean }> = ({ mine }) => {
       bg-no-repeat bg-cover bg-center"
     >
       <div className="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-75"></div>
-      <div className="flex flex-col justify-end text-white p-8 space-y-8 relative z-10 h-80">
+      <div className="flex flex-col text-white p-8 space-y-8 relative z-10 h-80">
         {!mine ? (
           <h1 className="text-7xl text-center font-semibold">
             it is Time <br /> <br /> to Charity
@@ -22,14 +22,15 @@ const Banner: React.FC<{ mine?: boolean }> = ({ mine }) => {
           </h1>
         )}
         <br />
+        <div className='mt-80'></div>
         <Link
           href={'/donations/create'}
-          className="bg-white text-green-600 px-4 space-x-1 font-bold
+          className="bg-white text-green-600 px-4 space-x-2 font-bold
         flex justify-center items-center rounded-full text-center py-3
         transition duration-300 ease-in-out hover:bg-green-600 hover:text-white"
         >
           <MdSunnySnowing size={25} />
-          <span>Start a LetsFund</span>
+          <span>Start a LetsFund Campaign</span>
         </Link>
       </div>
     </div>
