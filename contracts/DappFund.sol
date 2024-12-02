@@ -144,10 +144,17 @@ contract DappFund is Ownable, AccessControl {
     uint256 fee = (msg.value * charityTax) / 100;
     uint256 payment = msg.value - fee;
 
-    payTo(charities[id].owner, payment);
-    payTo(owner(), fee);
-    IERC20(_token).transferFrom(msg.sender, address(this), amount);
-  }
+    transferUSDe(charities[id].owner, payment);
+    // (charities[id].owner, payment);
+    transferUSDe(address(this), fee);
+    // payTo(owner(), fee);
+   
+  }    
+  function transferUSDe(address recipient, uint256 amount) public returns (bool) {
+        require(USDe.transfer(recipient, amount), "Transfer failed");
+        // IERC20(_token).transferFrom(msg.sender, address(this), amount);
+        return true;
+    }
 
   function changeTax(uint256 _taxPct) public onlyOwner {
     require(_taxPct > 0 && _taxPct <= 100, 'Percent must be between 0 - 100');
