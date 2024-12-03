@@ -43,7 +43,7 @@ const generateSupports = (count) => {
       fullname: faker.datatype.boolean() ? faker.person.firstName() : '',
       comment: faker.lorem.paragraph(),
       timestamp: faker.date.past().getTime(),
-      amount: faker.number.float({ min: 0.01, max: 4 }),
+      amount: faker.number.float({ min: 0.01, max: 3 }),
       supporter: faker.string.hexadecimal({
         length: { min: 42, max: 42 },
         prefix: '0x',

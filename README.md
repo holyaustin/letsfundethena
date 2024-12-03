@@ -1,6 +1,6 @@
-# LetsFund: Web3 Social / Consumer DApp on Linea
+# LetsFund: Fundraising DApp on ethena Testnet
 
-"letsfund" is a groundbreaking Web3 charity fundraising platform designed to revolutionize the way charitable organizations raise funds and engage with their communities. Deployed on the Linea Sepolia Blockchain, letsfund combines the transparency and security of blockchain technology with an intuitive user experience, allowing both donors and beneficiaries to experience a seamless and trustworthy process. By leveraging decentralized technologies, letsfund aims to minimize overhead costs, enhance donor engagement, and ensure that contributions have a direct and measurable impact.
+"letsfund" is a groundbreaking Web3 charity fundraising platform designed to revolutionize the way charitable organizations raise funds and engage with their communities. Deployed on the Ethena  Blockchain, letsfund combines the transparency and security of blockchain technology with an intuitive user experience, allowing both donors and beneficiaries to experience a seamless and trustworthy process. By leveraging decentralized technologies, letsfund aims to minimize overhead costs, enhance donor engagement, and ensure that contributions have a direct and measurable impact.
 
 ![Charity Marketplace](./screenshots/letsfund2.png)
 
@@ -43,19 +43,19 @@ Follow these steps to run the application:
 
 1. Install the package modules by running the command: `yarn install`
 2. Start the Hardhat server: `yarn blockchain`
-3. Run the contract deployment script: `yarn deploy` or `yarn deploy --network linea_sepolia`
+3. Run the contract deployment script: `yarn deploy` or `yarn deploy --network EthenaTestnet`
 4. Run the contract seeding script: `yarn seed`
 5. Spin up the Next.js development server: `yarn dev`
 
 Now, your application should be up and running.
 
-Linea_Sepolia contract address = 0x342b41E0F99fb95F1667BC634Ca0872709e6d4b2
+Ethena Testnet contract address = 0xB127341014E19e3fed3d8fDCe02F405e80b08888
 
-https://sepolia.lineascan.build/address/0x342b41e0f99fb95f1667bc634ca0872709e6d4b2
+https://testnet.explorer.ethena.fi/address/0xB127341014E19e3fed3d8fDCe02F405e80b08888
 
 ## Important Project URLs
 
-- Deployed Contract: https://sepolia.lineascan.build/address/0x342b41E0F99fb95F1667BC634Ca0872709e6d4b2
+- Deployed Contract: https://testnet.explorer.ethena.fi/address/0xB127341014E19e3fed3d8fDCe02F405e80b08888
 - Youtube video: https://youtu.be/DrqK19pH5q4
 - Live dApp: https://letsfundcharity.vercel.app/
 - Github Repo: https://github.com/holyaustin/letsfundcharity
@@ -75,7 +75,7 @@ https://sepolia.lineascan.build/address/0x342b41e0f99fb95f1667bc634ca0872709e6d4
 
 ## Useful links
 
-- 🏠 [Linea Sepolia](https://sepolia.lineascan.build/)
+- 🏠 [Ethena](https://ethena.fi/)
 - ⚽ [Metamask](https://metamask.io/)
 - 💡 [Hardhat](https://hardhat.org/)
 - 📈 [Alchemy](https://dashboard.alchemy.com/)

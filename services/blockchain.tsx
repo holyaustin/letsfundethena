@@ -1,5 +1,6 @@
 import { ethers } from 'ethers'
 import address from '@/contracts/contractAddress.json'
+import { fetchBalance,getAccount } from '@wagmi/core';
 import dappFundAbi from '@/artifacts/contracts/DappFund.sol/DappFund.json'
 import { globalActions } from '@/store/globalSlices'
 import { store } from '@/store'
@@ -115,17 +116,46 @@ const updateCharity = async (charity: CharityParams): Promise<void> => {
 }
 
 const makeDonation = async (donor: DonorParams): Promise<void> => {
+  const account = getAccount();
   if (!ethereum) {
     reportError('Please install a browser provider')
     return Promise.reject(new Error('Browser provider not installed'))
   }
 
   try {
-    const contract = await getEthereumContracts()
-    tx = await contract.donate(donor.id, donor.fullname, donor.comment, {
-      value: toWei(Number(donor.amount)),
-    })
+    console.log("B4 Tx")
+    const contract = await getEthereumContracts();
+    //const tx = await contract.donate(id, fullname, comment, ethers.utils.parseUnits(amount.toString(), 'ether'));
+
+    const tx = await contract.donate(
+        donor.id, 
+        donor.fullname, 
+        donor.comment,
+        ethers.parseEther(donor.amount.toString()),
+        {
+          gasLimit: 3000000000000
+        }
+      );
+      console.log('Donation made successfully');
+      console.log("After Tx")
+     /**
+      {
+      from: account.address,
+      to: address.dappFundContract,
+      value: toWei(Number(0.000001)),    
+    }),
+    */
     await tx.wait()
+    console.log("After Wait")
+    /**
+    await luckyGame.buyToken(ethers.utils.parseEther(TTTToken.toString()), {
+      from: address,
+      value: ethers.utils.parseEther(nativeToken.toString()),
+      //gasLimit: 3000000
+    });
+*/
+    //const erc20 = new ethers.Contract(addressUSDe, abi, signer);
+    //tx = await erc20.transfer("ricmoo.eth", parseUnits(donor.amount));
 
     const supports = await getSupporters(Number(donor.id))
     store.dispatch(setSupports(supports))

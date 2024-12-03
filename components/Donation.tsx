@@ -39,7 +39,7 @@ const Donation: React.FC<ComponentProp> = ({ comment, support }) => {
         )}
 
         <div className="flex justify-start items-center">
-          <span>{support?.amount.toFixed(4)} ETH</span>
+          <span>{support?.amount.toFixed(4)} USDe</span>
           <BsDot size={30} className="text-gray-300" />
           <Moment className="text-gray-500" toNow>
             {support?.timestamp}

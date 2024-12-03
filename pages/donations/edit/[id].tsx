@@ -104,10 +104,10 @@ const Page: NextPage<{ charityData: CharityStruct }> = ({ charityData }) => {
                 className="block w-full text-sm text-slate-500 bg-transparent
                 border-0 focus:outline-none focus:ring-0"
                 type="number"
-                step={0.01}
-                min={0.01}
+                step={0.001}
+                min={0.001}
                 name="amount"
-                placeholder="Amount e.g. 0.0002 ETH"
+                placeholder="Amount e.g. 0.5 USDe"
                 required
                 value={charity.amount}
                 onChange={handleChange}

@@ -1,8 +1,8 @@
 require('@nomicfoundation/hardhat-toolbox');
 require('dotenv').config();
 const { NEXT_PUBLIC_PRIVATE_KEY } = process.env;
-
-module.exports = {
+console.log("key is", NEXT_PUBLIC_PRIVATE_KEY );
+module.exports =  {
   defaultNetwork: 'ethenaTestnet',
   networks: {
     hardhat: {},
@@ -17,7 +17,7 @@ module.exports = {
     },
   },
   solidity: {
-    version: '0.8.19',
+    version: '0.8.17',
     settings: {
       optimizer: {
         enabled: true,

@@ -1,5 +1,5 @@
 //SPDX-License-Identifier: MIT
-pragma solidity >=0.7.0 <0.9.0;
+pragma solidity 0.8.17;
 
 import '@openzeppelin/contracts/access/Ownable.sol';
 import '@openzeppelin/contracts/utils/Counters.sol';
@@ -118,41 +118,47 @@ contract DappFund is Ownable, AccessControl {
     charities[id].banned = !charities[id].banned;
   }
 
-  function donate(uint256 id, string memory fullname, string memory comment) public payable {
-    require(charityExist[id], 'Charity Not Found');
-    require(!charities[id].banned, 'Charity Banned, contact admin');
-    require(msg.value > 0 ether, 'Donation cannot be zero');
-    require(USDe.balanceOf(msg.sender) > 0, "Donation cannot be zero");
+  function donate(uint256 id, string memory fullname, string memory comment, uint256 _amount ) public {
+    // Ensure the charity exists and is not banned
+    require(charityExist[id], "Charity Not Found");
+    require(!charities[id].banned, "Charity Banned, contact admin");
+    
+    // Ensure the donation does not exceed the charity's budget
+    require(charities[id].raised < charities[id].amount, "Charity budget fulfilled");
 
-    require(charities[id].raised < charities[id].amount, 'Charity budget fulfilled');
+    _totalDonation.increment();  // Increment the total donations
+    
+    //Calculate fee and payment amounts
+    uint256 fee = (_amount * charityTax) / 100;
+    uint256 payment = _amount - fee;
 
-    _totalDonation.increment();
-
+    // Create the support structure in memory for gas saving
     SupportStruct memory support;
     support.id = _totalDonation.current();
     support.cid = id;
     support.fullname = fullname;
     support.supporter = msg.sender;
-    support.amount = msg.value;
+    support.amount = _amount;
     support.comment = comment;
     support.timestamp = currentTime();
     supportersOf[id].push(support);
-
-    charities[id].raised += msg.value;
+    
+    // Update charity records
+    charities[id].raised += _amount;
     charities[id].donations += 1;
 
-    uint256 fee = (msg.value * charityTax) / 100;
-    uint256 payment = msg.value - fee;
+    // Approve amount then transfer the funds
+    transferFromUSDe(msg.sender, charities[id].owner, payment);
+   transferFromUSDe(msg.sender, address(this), fee);
+}
+  
+ function transferFromUSDe(address from, address recipient, uint256 amount) public returns (bool) {
+        require(USDe.transferFrom(from, recipient, amount), "TransferFrom failed");
+        return true;
+    }
 
-    transferUSDe(charities[id].owner, payment);
-    // (charities[id].owner, payment);
-    transferUSDe(address(this), fee);
-    // payTo(owner(), fee);
-   
-  }    
   function transferUSDe(address recipient, uint256 amount) public returns (bool) {
         require(USDe.transfer(recipient, amount), "Transfer failed");
-        // IERC20(_token).transferFrom(msg.sender, address(this), amount);
         return true;
     }
 

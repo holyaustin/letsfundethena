@@ -119,10 +119,10 @@ const Page: NextPage = () => {
                 className="block w-full text-sm text-slate-500 bg-transparent
                 border-0 focus:outline-none focus:ring-0"
                 type="number"
-                step={0.0001}
-                min={0.0001}
+                step={0.1}
+                min={0.1}
                 name="amount"
-                placeholder="Amount e.g. 0.0002 ETH"
+                placeholder="Amount e.g. 0.5 USDe"
                 required
                 value={charity.amount}
                 onChange={handleChange}

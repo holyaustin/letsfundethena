@@ -120,10 +120,10 @@ const Donor: React.FC<{ charity: CharityStruct }> = ({ charity }) => {
               className="block w-full text-sm text-slate-500 bg-transparent
               border-0 focus:outline-none focus:ring-0"
               type="number"
-              step={0.0001}
-              min={0.0001}
+              step={0.001}
+              min={0.001}
               name="amount"
-              placeholder="Amount e.g. 0.0002 ETH"
+              placeholder="Amount e.g. 0.5 USDe"
               required
               value={donor.amount}
               onChange={handleChange}
@@ -134,7 +134,7 @@ const Donor: React.FC<{ charity: CharityStruct }> = ({ charity }) => {
             <button
               type="submit"
               className="flex flex-row justify-center items-center w-full text-black text-md
-            bg-amber-600 py-3 px-20 rounded-full drop-shadow-xl border font-medium
+            bg-amber-600 py-3 px-10 rounded-full drop-shadow-xl border font-medium
             focus:outline-none focus:ring transition-all duration-300 ease-in-out
             hover:bg-amber-500"
             >

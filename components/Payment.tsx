@@ -30,7 +30,7 @@ const Payment: React.FC<ComponentProp> = ({ charity, supports, owner }) => {
             <FaEthereum />
             <span>{charity.raised.toFixed(4)}</span>
           </h4>
-          <span className="text-gray-800">raised of {charity.amount.toFixed(4)} ETH target</span>
+          <span className="text-gray-800">raised of {charity.amount.toFixed(4)} <h3 className='font-extrabold'>USDe target</h3></span>
         </div>
 
         <div className="h-1 bg-gray-300 rounded-full mb-2">
@@ -45,9 +45,9 @@ const Payment: React.FC<ComponentProp> = ({ charity, supports, owner }) => {
 
       <div className="flex flex-col space-y-2 font-semibold"> 
 
-      <ShareLink link={'https://letsfundcharity.vercel.app/donations/' + charity.id} 
+      <ShareLink link={'https://letsfundethena.vercel.app/donations/' + charity.id} 
               text=" 🌟 Imagine a world where every child has access to education! You can help make this a reality. Even a small contribution to our charity project can ignite dreams and change lives. Join us in creating a brighter future! ✨" 
-              hashtags="Linea MakeADifference">
+              hashtags="MakeADifference">
               {(link: string | undefined) => (
                 
                 <button

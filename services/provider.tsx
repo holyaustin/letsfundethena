@@ -24,7 +24,7 @@ const publicProviderRPC = `https://testnet.rpc.ethena.fi`
 
 const ethenaTestnet: Chain = {
   id: 52_085_143,
-  name: 'Ethena Network Testnet',
+  name: 'Ethena Testnet',
   network: 'ethena',
   iconUrl: 'https://network.ethena.fi/shared/ethena.svg',
   iconBackground: '#000000',
